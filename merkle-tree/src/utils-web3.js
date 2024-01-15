@@ -10,6 +10,10 @@
 import fs from 'fs';
 import Web3 from './web3';
 import logger from './logger';
+import config from 'config';
+import { join } from 'path';
+
+const { buildPath } = config;
 
 const web3 = Web3.connect();
 
@@ -73,7 +77,7 @@ let events = {};
 function getContractInterface(contractName) {
   logger.debug(`./src/utils-web3 getContractInterface(${contractName})`);
 
-  const path = `./build/contracts/${contractName}.json`;
+  const path = join(buildPath, `${contractName}.json`);
   const contractInterface = JSON.parse(fs.readFileSync(path));
   logger.silly(`contractInterface: ${JSON.stringify(contractInterface, null, 2)}`);
   return contractInterface;

@@ -6,6 +6,7 @@
 import express, { Router } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import config from 'config';
 import logger from './logger';
 import Web3 from './web3';
 import autostart from './auto-start';
@@ -60,8 +61,9 @@ app.use(formatError);
 app.use(errorHandler);
 app.use(logError);
 
-const server = app.listen(80, '0.0.0.0', () => {
-  logger.info('merkle-tree RESTful API server started on ::: 80');
+const PORT = config.PORT;
+const server = app.listen(PORT, '0.0.0.0', () => {
+  logger.info(`merkle-tree RESTful API server started on ::: ${PORT}`);
   if (process.env.AUTOSTART) autostart();
 });
 server.timeout = 0;

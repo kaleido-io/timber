@@ -152,7 +152,7 @@ An 'orchestrator' which oversees the various filtering steps of the filter
 */
 async function filterBlock(db, contractName, contractInstance, fromBlock, treeId) {
   logger.debug(
-    `src/filter-controller filterBlock(db, contractInstance, fromBlock=${fromBlock}, treeId)`,
+    `src/filter-controller filterBlock(db, contractName=${contractName}, contractInstance, fromBlock=${fromBlock}, treeId)`,
   );
   const metadataService = new MetadataService(db);
 
@@ -236,7 +236,7 @@ async function getFromBlock(db, contractName, contractId, block) {
 
       if (transactionHash) {
         receipt = await utilsWeb3.getTransactionReceipt(transactionHash);
-        logger.info(`receipt: ${receipt}`);
+        logger.info(`receipt: ${JSON.stringify(receipt, null, 2)}`);
       }
 
       blockNumber = receipt ? receipt.blockNumber : config.FILTER_GENESIS_BLOCK_NUMBER;

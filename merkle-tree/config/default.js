@@ -117,6 +117,20 @@ module.exports = {
         },
       },
     },
+    EscrowShield: {
+      treeHeight: 32,
+      events: {
+        // filter for the following event names:
+        NewLeaf: {
+          // filter for these event parameters:
+          parameters: ['leafIndex', 'leafValue'],
+        },
+        NewLeaves: {
+          // filter for these event parameters:
+          parameters: ['minLeafIndex', 'leafValues'],
+        },
+      },
+    },
   },
 
   /*
@@ -130,7 +144,7 @@ module.exports = {
   contractOrigin: process.env.CONTRACT_ORIGIN,
 
   contractsPath: '/app/contracts/', // where to find contract .sol files (if applicable)
-  buildPath: '/app/build/contracts/', // where to find the contract interface json files
+  buildPath: '/app/build/conracts', // where to find the contract interface json files
 
   // external contract deployment microservice (which deploys the MerkleTree.sol contract):
   deployer: {
@@ -140,25 +154,23 @@ module.exports = {
 
   // mongodb:
   mongo: {
-    host: 'mongo-merkle-tree',
+    host: process.env.MONGO_HOST || 'mongo_merkle_tree',
     port: '27017',
     databaseName: process.env.DB_NAME || 'merkle_tree',
     admin: 'admin',
     adminPassword: 'admin',
-    dbUrl: process.env.DB_URL || 'mongodb://mongo-merkle-tree:27017',
+    dbUrl: process.env.DB_URL || 'mongodb://mongo_merkle_tree:27017',
   },
   isLoggerEnabled: true,
 
   // web3:
   web3: {
-    host: process.env.BLOCKCHAIN_HOST,
-    port: process.env.BLOCKCHAIN_PORT,
-    rpcUrl: process.env.RPC_URL,
+    rpcUrl: process.env.RPC_URL || 'http://localhost:8545',
     options: {
       defaultAccount: '0x0',
       defaultBlock: '0', // e.g. the genesis block our blockchain
       defaultGas: 2000000,
-      defaultGasPrice: 20000000000,
+      defaultGasPrice: 0,
       transactionBlockTimeout: 50,
       transactionConfirmationBlocks: 15,
       transactionPollingTimeout: 480,
@@ -166,4 +178,5 @@ module.exports = {
     },
   },
   LOG_LEVEL: process.env.LOG_LEVEL || 'info',
+  PORT: process.env.PORT || 3001,
 };
