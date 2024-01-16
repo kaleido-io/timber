@@ -144,7 +144,7 @@ module.exports = {
   contractOrigin: process.env.CONTRACT_ORIGIN,
 
   contractsPath: '/app/contracts/', // where to find contract .sol files (if applicable)
-  buildPath: '/app/build/conracts', // where to find the contract interface json files
+  buildPath: '/app/build/contracts', // where to find the contract interface json files
 
   // external contract deployment microservice (which deploys the MerkleTree.sol contract):
   deployer: {
