@@ -43,80 +43,6 @@ module.exports = {
 
   // contracts to filter:
   contracts: {
-    // contract name:
-    MerkleTreeControllerMiMC_BN254: {
-      events: {
-        // filter for the following event names:
-        NewLeaf: {
-          // filter for these event parameters:
-          parameters: ['leafIndex', 'leafValue'],
-        },
-        NewLeaves: {
-          // filter for these event parameters:
-          parameters: ['minLeafIndex', 'leafValues'],
-        },
-      },
-    },
-    MerkleTreeControllerMiMC_BLS12: {
-      events: {
-        // filter for the following event names:
-        NewLeaf: {
-          // filter for these event parameters:
-          parameters: ['leafIndex', 'leafValue'],
-        },
-        NewLeaves: {
-          // filter for these event parameters:
-          parameters: ['minLeafIndex', 'leafValues'],
-        },
-      },
-    },
-    // contract name:
-    MerkleTreeControllerSHA: {
-      events: {
-        // filter for the following event names:
-        NewLeaf: {
-          // filter for these event parameters:
-          parameters: ['leafIndex', 'leafValue'],
-        },
-        NewLeaves: {
-          // filter for these event parameters:
-          parameters: ['minLeafIndex', 'leafValues'],
-        },
-      },
-    },
-    // contract name:
-    MultipleMerkleTreesControllerSHA: {
-      treeId: {
-        a: {
-          treeHeight: 16,
-          events: {
-            // filter for the following event names:
-            NewLeafA: {
-              // filter for these event parameters when a single leaf is added:
-              parameters: ['leafIndex', 'leafValue'],
-            },
-            NewLeavesA: {
-              // filter for these event parameters when multiple leaves are added:
-              parameters: ['minLeafIndex', 'leafValues'],
-            },
-          },
-        },
-        b: {
-          treeHeight: 10,
-          events: {
-            // filter for the following event names:
-            NewLeafB: {
-              // filter for these event parameters:
-              parameters: ['leafIndex', 'leafValue'],
-            },
-            NewLeavesB: {
-              // filter for these event parameters:
-              parameters: ['minLeafIndex', 'leafValues'],
-            },
-          },
-        },
-      },
-    },
     EscrowShield: {
       treeHeight: 32,
       events: {
@@ -130,6 +56,7 @@ module.exports = {
           parameters: ['minLeafIndex', 'leafValues'],
         },
       },
+      address: process.env.ESCROW_SHIELD_ADDRESS,
     },
   },
 
